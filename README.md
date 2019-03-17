@@ -12,6 +12,7 @@
     docker-compose up
     ```
 1. `http://localhost:3000/signIn`にアクセス
+1. `admin1@admin.example` / `asdfasdf`でログイン
 
 
 ## 利用している技術
