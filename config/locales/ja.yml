@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    models:
+    attributes:
+      task/action:
+        create_account: アカウントの作成
+        destroy_account: アカウントの削除
+      task/status:
+        in_progress: 処理中
+        completed: 完了
+        rejected: 却下

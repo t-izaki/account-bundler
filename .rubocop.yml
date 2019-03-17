@@ -1,0 +1,104 @@
+AllCops:
+  TargetRubyVersion: 2.4
+  Exclude:
+    - 'db/schema.rb'
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'bin/**/*'
+    - 'Gemfile'
+    - 'vendor/**/*'
+
+Rails:
+  Enabled: true
+
+# 20くらいを保てれば十分だと思う
+Metrics/AbcSize:
+  Max: 20
+
+# ひとまずこのくらい
+Metrics/CyclomaticComplexity:
+  Max: 7
+
+# 200くらいを目指したい
+Metrics/ClassLength:
+  Max: 250
+
+# ほどほどで. 引数を縦に書いて伸びたりするし.
+Metrics/MethodLength:
+  Max: 25
+  Exclude:
+    - "db/migrate/*.rb"
+
+# 15くらいにしたい
+Metrics/BlockLength:
+  Max: 25
+  Exclude:
+    # initializer は configure で大きな block があるから除外する
+    - "config/initializers/*.rb"
+    # routing は分けられないので除外
+    - "config/routes.rb"
+    # 設定ファイルは除外
+    - "config/environments/*.rb"
+    - "test/factories/*.rb"
+
+# あまりに長い行は避ける
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - "db/migrate/*.rb"
+    - "config/routes.rb"
+
+# ロジックをcontrollerから切り離そうとするとserviceの引数はどうしても多くなる
+Metrics/ParameterLists:
+  Max: 10
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented_relative_to_receiver
+
+Layout/TrailingWhitespace:
+  Exclude:
+    - "config/routes.rb"
+
+# 配列の要素の最後のカンマは許可する
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+# ハッシュの要素の最後のカンマは許可する
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+# 数値の _ 区切り. 多分そんなに大きい数値書かない.
+Style/NumericLiterals:
+  Enabled: false
+
+# 後置は使わない方が分かりやすい場合もあるので
+Style/IfUnlessModifier:
+  Enabled: false
+
+# https://github.com/aptible/aptible-tasks/issues/23
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+
+# 本当はなるべくDoc書きたい
+Style/Documentation:
+  Enabled: false
+
+Style/AsciiComments:
+  Enabled: false
+
+# 文字列をfreezeさせるコメントはなくてもよい
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+# zero?とか書きたい人がいなかったので #1104
+Style/NumericPredicate:
+  EnforcedStyle: comparison
+
+# arrowでの条件指定が引っかかるので無効
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Rails/ReversibleMigration:
+  # いまさら migrate 変えるわけにもいかないので
+  Exclude:
+    - 'db/migrate/20170414071135_delete_model.rb'
