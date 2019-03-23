@@ -7,9 +7,8 @@
 ## 使い方
 1. dockerコンテナを起動する
     ```
-    docker-compose build
-    docker-compose run web yarn install
-    docker-compose up
+    git clone https://github.com/t-izaki/account-bundler .
+    docker-compose up -d
     ```
 1. `http://localhost:3000/signIn`にアクセス
 1. `admin1@admin.example` / `asdfasdf`でログイン

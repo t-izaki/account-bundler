@@ -20,3 +20,7 @@ COPY Gemfile.lock /account-bundler/Gemfile.lock
 
 RUN bundle install
 COPY . /account-bundler
+
+RUN yarn install
+
+EXPOSE 3000
